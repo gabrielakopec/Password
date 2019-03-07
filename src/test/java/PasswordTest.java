@@ -1,125 +1,125 @@
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class PasswordTest {
 
 
     @Test
-    public void ShouldReturnTrueIfEightSignsGiven () {
+    void ShouldReturnTrueifEightSignsGiven() {
         //given
         boolean expected = true;
         //when
-        boolean result = Password.IfHasEightSigns("jkhf6574");
+        boolean result = Password.ifHasEightSigns("jkhf6574");
         //than
-        assertEquals(result, true);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void ShouldReturnFalseIfFourSignsGiven () {
+    void ShouldReturnFalseifFourSignsGiven() {
         //given
         boolean expected = false;
         //when
-        boolean result = Password.IfHasEightSigns("h&jg");
+        boolean result = Password.ifHasEightSigns("h&jg");
         //than
-        assertEquals(result, false);
+        assertEquals(expected, result);
     }
 
 
     @Test
-    public void ShouldReturnTrueIfNumbersOrLettersOrSpecialSignsAreGiven () {
+    void ShouldReturnTrueifNumbersOrLettersOrSpecialSignsAreGiven() {
         //given
         boolean expected = true;
         //when
-        boolean result = Password.IfContainsNumbersLettersSpecialSigns("jkt545%$#!kj");
+        boolean result = Password.ifContainsNumbersLettersSpecialSigns("jkt545%$#!kj");
         //than
-        assertEquals(result, true);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void ShouldReturnFalseIfNumbersOrLettersOrSpecialSignsAreGiven () {
+    void ShouldReturnFalseifNumbersOrLettersOrSpecialSignsAreGiven() {
         //given
         boolean expected = false;
         //when
-        boolean result = Password.IfContainsNumbersLettersSpecialSigns("jkt.<");
+        boolean result = Password.ifContainsNumbersLettersSpecialSigns("jkt.<");
         //than
-        assertEquals(result, false);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void ShouldReturnTrueIfTwoNumberOrMoreAreGIven () {
+    void ShouldReturnTrueifTwoNumberOrMoreAreGIven() {
         //given
         boolean expected = true;
         //when
-        boolean result = Password.IfContainsAtLeastTwoNumbers("jkt%$678KJ");
+        boolean result = Password.ifContainsAtLeastTwoNumbers("jkt%$678KJ");
         //than
-        assertEquals(result, true);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void ShouldReturnFalseIfLessThanTwoNumberAreGIven () {
+    void ShouldReturnFalseifLessThanTwoNumberAreGIven() {
         //given
         boolean expected = false;
         //when
-        boolean result = Password.IfContainsAtLeastTwoNumbers("jkt%$6");
+        boolean result = Password.ifContainsAtLeastTwoNumbers("jkt%$6");
         //than
-        assertEquals(result, false);
+        assertEquals(expected, result);
     }
     @Test
-    public void ShouldReturnTrueIfOneBigLetterOrMoreIsGiven () {
+    void ShouldReturnTrueifOneBigLetterOrMoreIsGiven() {
         //given
         boolean expected = true;
         //when
-        boolean result = Password.IfContainsAtLeastOneBigLetter("jkt%$678KJ");
+        boolean result = Password.ifContainsAtLeastOneBigLetter("jkt%$678KJ");
         //than
-        assertEquals(result, true);
+        assertEquals(expected, result);
     }
     @Test
-    public void ShouldReturnFalseIfNoBigLetterIsGiven () {
+    void ShouldReturnFalseifNoBigLetterIsGiven() {
         //given
         boolean expected = false;
         //when
-        boolean result = Password.IfContainsAtLeastOneBigLetter("jkt%$678");
+        boolean result = Password.ifContainsAtLeastOneBigLetter("jkt%$678");
         //than
-        assertEquals(result, false);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void ShouldReturnTrueIfOneSpecialSignOrMoreIsGiven () {
+    void ShouldReturnTrueifOneSpecialSignOrMoreIsGiven() {
         //given
         boolean expected = true;
         //when
-        boolean result = Password.IfContainsAtLeastOneSpecialSign("jkt%$678KJ");
+        boolean result = Password.ifContainsAtLeastOneSpecialSign("jkt%$678KJ");
         //than
-        assertEquals(result, true);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void ShouldReturnFalseIfNoOneSpecialSignIsGiven () {
+    void ShouldReturnFalseifNoOneSpecialSignIsGiven() {
         //given
         boolean expected = false;
         //when
-        boolean result = Password.IfContainsAtLeastOneSpecialSign("jkt678KJ");
+        boolean result = Password.ifContainsAtLeastOneSpecialSign("jkt678KJ");
         //than
-        assertEquals(result, false);
+        assertEquals(expected, result);
     }
     @Test
-    public void ShouldReturnTrueICorrectPasswordIsGiven() {
+    void ShouldReturnTrueICorrectPasswordIsGiven() {
         //given
         boolean expected = true;
         //when
-        boolean result = Password.IfCorrectPassword("jkt%$678KJ");
+        boolean result = Password.ifCorrectPassword("jkt%$678KJ");
         //than
-        assertEquals(result, true);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void ShouldReturnFalseIfWrongPasswordIsGiven() {
+    void ShouldReturnFalseifWrongPasswordIsGiven() {
         //given
         boolean expected = false;
         //when
-        boolean result = Password.IfCorrectPassword("jkjj887");
+        boolean result = Password.ifCorrectPassword("jkjj887");
         //than
-        assertEquals(result, false);
+        assertEquals(expected, result);
     }
 }

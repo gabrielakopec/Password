@@ -8,73 +8,62 @@ public class Password {
         Scanner scanner = new Scanner(System.in);
         String password = scanner.nextLine();
 
-        System.out.println(IfCorrectPassword(password));
+        System.out.println(ifCorrectPassword(password));
     }
 
 
-    public static boolean IfHasEightSigns(String password) {
-        if (password.length() >= 8) {
-            return true;
-        } else
-            return false;
+    static boolean ifHasEightSigns(String password) {
+        return password.length() >= 8;
     }
 
-    public static boolean IfContainsNumbersLettersSpecialSigns(String password) {
+    static boolean ifContainsNumbersLettersSpecialSigns(String password) {
 
 
-        long numberOfCorrectSigns = password.chars()
-                .filter(s -> s >= 48 && s <= 57 || s >= 64 && s <= 90 || s >= 97 && s <= 127 || s == 33 || s >= 35 && s <= 38)
-                .count();
-
-        if (numberOfCorrectSigns == password.length())
-            return true;
-        else
-            return
-                    false;
+        return password.chars()
+                .filter(s ->
+                        charIsBetween(s, 48, 57) ||
+                        charIsBetween(s, 64, 90) ||
+                        charIsBetween(s, 97, 127) ||
+                        charIsBetween(s, 35, 38) ||
+                        s == 33)
+                .count() == password.length();
     }
 
-    public static boolean IfContainsAtLeastTwoNumbers(String password) {
-
-        long numberOfNumbers = password.chars().filter(s -> s >= 48 && s <= 57)
-                .count();
-
-        if (numberOfNumbers >= 2)
-            return true;
-        else
-            return false;
+    static boolean ifContainsAtLeastTwoNumbers(String password) {
+        return password
+            .chars()
+            .filter(s -> charIsBetween(s, 48, 57))
+            .count() >= 2;
     }
 
-    public static boolean IfContainsAtLeastOneBigLetter(String password) {
-
-        long numberOfNumbers = password.chars().filter(s -> s >= 65 && s <= 90)
-                .count();
-
-        if (numberOfNumbers >= 1)
-            return true;
-        else
-            return false;
+    static boolean ifContainsAtLeastOneBigLetter(String password) {
+        return password
+            .chars()
+            .filter(s -> charIsBetween(s, 65, 90))
+            .count() >= 1;
     }
 
-    public static boolean IfContainsAtLeastOneSpecialSign(String password) {
+    static boolean ifContainsAtLeastOneSpecialSign(String password) {
 
-        long numberOfNumbers = password.chars().filter(s -> s >= 35 && s <= 38 || s == 64 || s == 33)
-                .count();
-
-        if (numberOfNumbers >= 1)
-            return true;
-        else
-            return false;
+        return password
+            .chars()
+            .filter(s ->
+                    charIsBetween(s, 35, 38) ||
+                    s == 64 ||
+                    s == 33)
+            .count() >= 1;
     }
 
-    public static boolean IfCorrectPassword(String password) {
-        if (IfHasEightSigns(password) &&
-                IfContainsNumbersLettersSpecialSigns(password) &&
-                IfContainsAtLeastTwoNumbers(password) &&
-                IfContainsAtLeastOneBigLetter(password) &&
-                IfContainsAtLeastOneSpecialSign(password)) {
-            return true;
-        } else
-            return false;
+    static boolean ifCorrectPassword(String password) {
+        return ifHasEightSigns(password) &&
+            ifContainsNumbersLettersSpecialSigns(password) &&
+            ifContainsAtLeastTwoNumbers(password) &&
+            ifContainsAtLeastOneBigLetter(password) &&
+            ifContainsAtLeastOneSpecialSign(password);
+    }
+
+    private static boolean charIsBetween(int s, int start, int end) {
+        return s >= start && s <= end;
     }
 
 }
